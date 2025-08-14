@@ -24,7 +24,7 @@ return new class extends Migration
             $table->foreign('payment_method_id')->references('id')->on('payment_methods')->onDelete('cascade')->onUpdate('cascade');
             $table->decimal('price',65,2);
             $table->string('status');
-            $table->string('image')->nullable();
+            $table->text('image')->nullable();
             $table->timestamps();
         });
     }

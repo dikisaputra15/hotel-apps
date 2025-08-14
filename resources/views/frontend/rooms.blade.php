@@ -1,6 +1,6 @@
 @extends('frontend.inc.main')
 @section('title')
-    <title>DONQUIXOTE | Cari Kamar</title>
+    <title>Lippo Carita | Cari Kamar</title>
 @endsection
 
 @section('content')
@@ -29,9 +29,9 @@
                                 <div class="border bg-light p-3 rounded mb-3">
                                     <h5 class="mb-3" style="font-size: 18px;">CHECK AVAILABILITY</h5>
                                     <label class="form-label">Check-in</label>
-                                    <input type="date" name="from" class="form-control shadow-none mb-3">
+                                    <input type="date" name="from" class="form-control shadow-none mb-3" min="{{ date('Y-m-d') }}">
                                     <label class="form-label">Check-out</label>
-                                    <input type="date" name="to" class="form-control shadow-none">
+                                    <input type="date" name="to" class="form-control shadow-none" min="{{ date('Y-m-d') }}">
                                 </div>
                                 {{-- <div class="border bg-light p-3 rounded mb-3">
         <h5 class="mb-3" style="font-size: 18px;">FACILITIES</h5>

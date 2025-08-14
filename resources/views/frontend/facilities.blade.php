@@ -1,6 +1,6 @@
 
 @extends('frontend.inc.main')
-@section('title') <title>DONQUIXOTE | FASILITAS HOTEL KAMI</title> @endsection
+@section('title') <title>Lippo Carita | FASILITAS HOTEL KAMI</title> @endsection
 
 @section('content')
 <div class="my-5 px-4">

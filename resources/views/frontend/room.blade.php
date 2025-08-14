@@ -1,6 +1,6 @@
 @extends('frontend.inc.main')
 @section('title')
-    <title>DONQUIXOTE | KAMAR #{{ $room->no }}</title>
+    <title>Lippo Carita | KAMAR #{{ $room->no }}</title>
 @endsection
 
 @section('css')
@@ -88,11 +88,11 @@
                         <input type="hidden" name="room" value="{{ $room->id }}">
                         <div class="mb-3">
                             <label for="check_in" class="col-form-label">Check in</label>
-                            <input type="date" class="form-control" required id="check_in" name="from">
+                            <input type="date" class="form-control" required id="check_in" name="from" min="{{ date('Y-m-d') }}">
                         </div>
                         <div class="mb-3">
                             <label for="check_out" class="col-form-label">Check out</label>
-                            <input type="date" class="form-control" required id="check_out" name="to">
+                            <input type="date" class="form-control" required id="check_out" name="to" min="{{ date('Y-m-d') }}">
                         </div>
                 </div>
                 <div class="modal-footer">

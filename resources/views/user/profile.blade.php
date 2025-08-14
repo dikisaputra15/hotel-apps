@@ -1,6 +1,6 @@
 @extends('frontend.inc.main')
 @section('title')
-    <title>DONQUIXOTE | PROFILE EDIT</title>
+    <title>Lippo Carita | PROFILE EDIT</title>
 @endsection
 
 @section('content')

@@ -21,7 +21,7 @@ class PaymentController extends Controller
         if (auth()->user()->is_admin == 0) {
             abort(404);
         }
-        $pay = Payment::with('Customer', 'Transaction')->orderBy('id', 'desc')->get()->where('status', 'Down Payment');
+        $pay = Payment::with('Customer', 'Transaction')->orderBy('id', 'desc')->get()->where('status', 'Paid');
         $pay1 = Payment::with('Customer', 'Transaction')->orderBy('id', 'desc')->get()->where('status', 'Pending');
         return view('dashboard.payment.index', compact('pay', 'pay1'));
     }
@@ -89,7 +89,7 @@ class PaymentController extends Controller
     {
         $pay = Payment::findOrFail($request->id);
         $pay->update([
-            'status' => 'Down Payment'
+            'status' => 'Paid'
         ]);
         Alert::success('Success', 'Payment Berhasil Di terima');
         return redirect('/dashboard/order/history-pay');

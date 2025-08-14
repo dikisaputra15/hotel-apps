@@ -15,6 +15,10 @@ use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\DB;
+use Midtrans\Snap;
+use Midtrans\Config;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -106,15 +110,64 @@ class OrderController extends Controller
     {
 
         $t = Transaction::findOrFail($id);
-        // dd($t->Payments[0]->Methode->nama);
-        $pmi = [1];
-        $pay = $t->Payments->wherenotin('payment_method_id', $pmi)->first();
-        if ($pay->status == 'Pending' and $pay->image != null) {
-            return back();
-        }
-        // dd($pay->id);
+
+        $pay = DB::table('payments')
+                ->where('transaction_id', $id)
+                ->first();
+
+        $user = Auth::user();
+
         $price = Room::where('id', $t->Room->id)->first()->price;
-        return view('frontend.bayar', compact('t', 'price', 'pay'));
+
+          // Set konfigurasi Midtrans
+        \Midtrans\Config::$serverKey = config('midtrans.server_key');
+        \Midtrans\Config::$isProduction = config('midtrans.is_production');
+        \Midtrans\Config::$isSanitized = true;
+        \Midtrans\Config::$is3ds = true;
+
+         // Cek status transaksi jika token sudah ada
+        if ($pay->image) {
+            try {
+                $status = (object) \Midtrans\Transaction::status($pay->invoice);
+                if ($status->transaction_status === 'expire') {
+                    // Buat Snap Token baru karena token lama sudah expired
+                    $pay->image = null;
+                    $pay->status = 'expired';
+                    $pay->save();
+                }
+            } catch (\Exception $e) {
+                // Token lama tidak valid, reset saja
+                $pay->image = null;
+                $pay->save();
+            }
+        }
+
+        if (!$pay->image) {
+            $params = [
+                'transaction_details' => [
+                    'order_id' => $pay->invoice,
+                    'gross_amount' => (int) $pay->price,
+                ],
+                'customer_details' => [
+                    'first_name' => $user->username,
+                    'email' => $user->email,
+                ],
+            ];
+
+            $snapToken = \Midtrans\Snap::getSnapToken($params);
+
+            DB::table('payments')
+                ->where('transaction_id', $id)
+                ->update([
+                    'image' => $snapToken,
+                    'status' => 'Pending'
+                ]);
+
+        } else {
+            $snapToken = $pay->image;
+        }
+
+        return view('frontend.bayar', compact('t', 'price', 'pay', 'snapToken'));
     }
 
     public function bayar(Request $request)
@@ -157,7 +210,6 @@ class OrderController extends Controller
             'transaction_id' => $transaction->id,
             'price' => $price,
             'status' => $status,
-            'payment_method_id' => $request->payment_method_id,
             'invoice' =>  '0' . $request->customer . 'INV' . $count . Str::random(4)
         ]);
 

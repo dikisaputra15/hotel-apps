@@ -1,6 +1,6 @@
 @extends('frontend.inc.main')
 @section('title')
-    <title>DONQUIXOTE | KONTAK KAMI</title>
+    <title>Lippo Carita | KONTAK KAMI</title>
 @endsection
 
 @section('content')
@@ -21,15 +21,13 @@
             <div class="col-lg-12">
                 <div class="row">
                     <div class="col-lg-8 col-md-6 mb-5 px-4">
-                        <iframe class="w-100 rounded" height="320px"
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.9060098636683!2d106.96529953804958!3d-6.406108795364871!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6995d20156e367%3A0x5b7cd089c3c57813!2sSMK%20Bina%20Mandiri%20Multimedia%20Cileungsi!5e0!3m2!1sid!2sid!4v1675517872782!5m2!1sid!2sid"allowfullscreen=""
-                            loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="map"></iframe>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63472.35485572957!2d106.12532593928658!3d-6.127717621698984!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e421fe8c8b0e161%3A0xae2356fd9b4fcc34!2sBanten%20Jaya%20University!5e0!3m2!1sen!2sid!4v1754715764424!5m2!1sen!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                     <div class="col-lg-4">
                         <h5>Address</h5>
                         <a href="https://goo.gl/maps/jy8CDHNPpsyBHVHYA" target="_blank"
                             class="d-inline-block text-decoration-none text-dark mb-2">
-                            <i class="bi bi-geo-alt-fill"></i> SMK BINA MANDIRI MULTIMEDIA
+                            <i class="bi bi-geo-alt-fill"></i> UNBAJA
                         </a>
                         <h5 class="mt-4">Call us</h5>
                         <a href="#" class="d-inline-block mb-2 text-decoration-none text-dark"><i
@@ -39,7 +37,7 @@
                                 class="bi bi-telephone-fill"></i> +85555555555</a>
                         <h5 class="mt-4">Email</h5>
                         <a href="#" class="d-inline-block mb-2 text-decoration-none text-dark"><i
-                                class="bi bi-envelope-fill"></i> Cakrawala@gmail.com</a>
+                                class="bi bi-envelope-fill"></i> unbaja@ac.id</a>
 
                         <h5 class="mt-4">Follow us</h5>
                         <a href="#" class="d-inline-block text-dark fs-5 me-2">

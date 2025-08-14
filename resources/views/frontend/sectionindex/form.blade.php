@@ -7,11 +7,11 @@
                 <div class="row align-items-end">
                     <div class="col-lg-4 mb-3">
                         <label class="form-label" style="font-weight: 500;">Check-in</label>
-                        <input type="date" name="from" id="from" class="form-control shadow-none">
+                        <input type="date" name="from" id="from" class="form-control shadow-none" min="{{ date('Y-m-d') }}">
                     </div>
                     <div class="col-lg-4 mb-3">
                         <label class="form-label" style="font-weight: 500;">Check-in</label>
-                        <input type="date" name="to" id="to" class="form-control shadow-none">
+                        <input type="date" name="to" id="to" class="form-control shadow-none" min="{{ date('Y-m-d') }}">
                     </div>
                     <div class="col-lg-3 mb-3">
                     <label class="form-label" style="font-weight: 500;">Person</label>

@@ -234,7 +234,7 @@ class UserController extends Controller
         $id = Auth()->user()->Customer->id;
         $user = Auth()->user();
         $not = [1];
-        $his = Payment::where('c_id', $id)->orderby('id', 'desc')->wherenotin('payment_method_id', $not)->paginate(10);
+        $his = Payment::where('c_id', $id)->orderby('id', 'desc')->paginate(10);
         return view('user.history', compact('his', 'user'));
     }
 }

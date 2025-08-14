@@ -47,4 +47,5 @@ if (window.innerWidth < 992) {
 }
 toggleDropdownPosition();
 </script>
-@yield('script')
+{{-- @yield('script') --}}
+@stack('script')

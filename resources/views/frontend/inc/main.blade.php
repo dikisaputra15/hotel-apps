@@ -4,8 +4,8 @@
     @yield('title')
 	<!-- CSS only -->
 @include('frontend.inc.links')
-@yield('link')
-@yield('css')
+{{-- @yield('link')
+@yield('css') --}}
 {{-- <link rel="shortcut icon" href="/img/logo.png"> --}}
 <style type="text/css">
         .availability-form{
@@ -58,6 +58,7 @@
         }
 
 </style>
+@stack('style')
 </head>
 <body>
 

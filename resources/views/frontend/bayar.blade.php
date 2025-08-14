@@ -1,7 +1,13 @@
 @extends('frontend.inc.main')
 @section('title')
-    <title>DONQUIXOTE | FORM BUKTI PEMBAYARAN</title>
+    <title>Lippo Carita | FORM BUKTI PEMBAYARAN</title>
 @endsection
+
+@push('style')
+    <script type="text/javascript"
+		src="{{config('midtrans.snap_url')}}"
+    data-client-key="{{config('midtrans.client_key')}}"></script>
+@endpush
 
 @section('content')
     <div class="container py-5">
@@ -96,15 +102,7 @@
                                     </div>
                                 </div>
 
-                                <div class="row mb-3">
-                                    <label for="paymentmethod" class="col-sm-2 col-form-label">Payment Method</label>
-                                    <div class="col-sm-10">
-
-                                        <input type="text" class="form-control" name="paymentmethod" id="paymentmethod"
-                                            placeholder="col-form-label" value="{{ $pay->Methode->nama }}" disabled>
-
-                                    </div>
-                                </div>
+                                <button id="pay-button" class="btn btn-sm w-100 btn-danger shadow-none mb-2">Bayar Sekarang</button>
 
                             </div>
 
@@ -113,40 +111,29 @@
                     </div>
                 </div>
 
-            </div>
-
-            <div class="col-lg-6">
-                <div class="card mb-4 shadow-lg border-0">
-                    <div class="container">
-                        <div class="card-body">
-                            <div class="row">
-
-                            </div>
-                            <div class="row">
-                                <h4>Kirim Bukti Pembayaran</h4>
-                            </div>
-                            <hr>
-                            <div class="row">
-                                <label for="" class="mb-2 form-label">Transfer ke : &nbsp;</label>
-                                <h5>{{ $pay->Methode->no_rek }}</h5>
-                            </div>
-                            <div class="row justify-content-start mt-4">
-                                <div class="col-md-12">
-                                    <form action="/bayar" method="post" enctype="multipart/form-data"> @csrf
-                                        <label for="image" class="mb-2">Upload Bukti <span class="fst-italic">(Max
-                                                3mb)</span></label>
-                                        <input required type="file" class="form-control mb-3" name="image"
-                                            id="image">
-                                        <input type="hidden" name="id" value="{{ $pay->id }}">
-                                        <button class="btn btn-primary justify-content-end" type="submit">Kirim</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
 
         </div>
     </div>
 @endsection
+
+@push('script')
+<script type="text/javascript">
+    document.getElementById('pay-button').addEventListener('click', function () {
+        snap.pay('{{ $snapToken }}', {
+            onSuccess: function(result) {
+                alert("Pembayaran berhasil!");
+                console.log(result);
+            },
+            onPending: function(result) {
+                alert("sedang menunggu pembayaran.");
+                console.log(result);
+            },
+            onError: function(result) {
+                alert("Terjadi kesalahan saat pembayaran.");
+                console.log(result);
+            }
+        });
+    });
+</script>
+@endpush

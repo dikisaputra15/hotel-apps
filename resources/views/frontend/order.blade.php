@@ -1,6 +1,6 @@
 @extends('frontend.inc.main')
 @section('title')
-    <title>DONQUIXOTE | ORDER NOW</title>
+    <title>Lippo Carita | ORDER NOW</title>
 @endsection
 
 @section('content')
@@ -103,7 +103,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="row mb-3">
+                                            {{-- <div class="row mb-3">
                                                 <label for="paymentmethod" class="col-sm-2 col-form-label">Payment
                                                     Method</label>
                                                 <div class="col-sm-10">
@@ -116,7 +116,7 @@
                                                     </select>
                                                 </div>
                                             </div>
-                                            <hr>
+                                            <hr> --}}
 
                                             <div class="row mb-4" style="margin-bottom:50px">
                                                 <label for="NIK" class="col-sm-2 col-form-label">NIK</label>
@@ -127,8 +127,7 @@
                                                 </div>
                                             </div>
 
-                                            <button type="submit" class="btn btn-primary float-end">Pay
-                                                DownPayment</button>
+                                            <button type="submit" class="btn btn-primary float-end">Pesan</button>
                                         </form>
                                     </div>
                                 </div>

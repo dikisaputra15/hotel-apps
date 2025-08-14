@@ -1,12 +1,12 @@
 <nav class="navbar navbar-expand-lg px-lg-3 py-lg-2 shadow sticky-top">
     <div class="container">
-        <a class="navbar-brand me-5 fw-bold fs-3 h-font" href="/"><img src="/img/logo.png" style="max-width:90px"> <span class="h5 fw-bold fs-3"> DONQUIXOTE </span> </a>
+        <a class="navbar-brand me-5 fw-bold fs-3 h-font" href="/"> <span class="h5 fw-bold fs-3"> Lippo Carita </span> </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="offcanvas offcanvas-end w-50" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
             <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Donquixote</h5>
+                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Lippo Carita</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
@@ -26,6 +26,12 @@
                         <li class="nav-item">
                           <a class="nav-link me-2 {{ Request::is('contact*') ? 'active' : ''}}" href="/contact">Contact</a>
                         </li>
+
+                    @guest
+                        <li class="nav-item">
+                            <a class="nav-link me-2 {{ Request::is('login') ? 'active' : ''}}" href="/login">Login</a>
+                        </li>
+                    @endguest
 
                         @if(auth()->user())
                         <li class="nav-item dropdown">

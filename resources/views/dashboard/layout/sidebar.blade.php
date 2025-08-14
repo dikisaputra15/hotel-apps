@@ -6,7 +6,7 @@
          <div class="sidebar-brand-icon">
              <i class="fas fa-building"></i>
          </div>
-         <div class="sidebar-brand-text mx-3">Donquixote</div>
+         <div class="sidebar-brand-text mx-3">Lippo Carita</div>
      </a>
 
      <!-- Divider -->

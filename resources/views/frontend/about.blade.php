@@ -1,5 +1,5 @@
 @extends('frontend.inc.main')
-@section('title') <title>DONQUIXOTE | TENTANG KAMI</title> @endsection
+@section('title') <title>Lippo Carita | TENTANG KAMI</title> @endsection
 
 @section('content')
 
@@ -34,8 +34,7 @@
       <div class="col-lg-6 col-md-5 mb-4 justify order-lg-1 order-md-1 order-2 text-center mt-4 mt-lg-0 mt-md-0">
         <h3 class="mb-3 ">About us</h3>
         <p>
-          Perusahaan Donquixote telah berdiri sejak tahun 2022, Dimulai dari satu bangunan hotel yang tidak terlalu besar dan hanya menyewakan beberapa kamar.
-          Namun kini Perusahaan Donquixote telah mempunyai Kamar lebih dari 20 Kamar. Fasilitas yang ada di Perusahaan Donquixote diantara lain adalah Kolam renang pribadi, Ruangan Merokok, Gratis Wifi, Sarapan, dan Makan Siang.
+         Selamat datang di Lippo Carita, destinasi sempurna untuk menikmati keindahan Pantai Carita, Banten. Berlokasi tepat di tepi pantai, hotel kami menawarkan pengalaman menginap yang nyaman dengan pemandangan laut yang menakjubkan, suara ombak yang menenangkan, dan udara segar yang menyejukkan. Dengan desain yang memadukan nuansa modern dan sentuhan tropis, kami menyediakan berbagai pilihan kamar yang dilengkapi fasilitas terbaik untuk memastikan kenyamanan Anda. Mulai dari kamar dengan balkon pribadi menghadap laut, kolam renang outdoor yang memanjakan, hingga restoran yang menyajikan hidangan laut segar khas Banten. Kami berkomitmen untuk memberikan pelayanan ramah, suasana hangat, dan pengalaman tak terlupakan bagi setiap tamu. Baik Anda datang untuk liburan keluarga, bulan madu romantis, atau perjalanan bisnis, Lippo Carita adalah pilihan tepat untuk menjadikan momen Anda lebih istimewa.
         </p>
       </div>
       <div class="col-lg-5 col-md-5 mb-4 order-lg-2 order-md-2 order-1">

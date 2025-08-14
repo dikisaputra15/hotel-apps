@@ -67,29 +67,29 @@
                                     </div>
                                 </div>
 
-                                <div class="row mb-3">
+                                {{-- <div class="row mb-3">
                                     <label for="Paidoff" class="col-sm-2 col-form-label">Paid Off</label>
                                     <div class="col-sm-10">
                                         <input type="text" id="Paidoff"
                                             class="form-control"value="IDR {{ number_format($transaction->getTotalPayment()) }}"
                                             readonly>
                                     </div>
-                                </div>
+                                </div> --}}
 
-                                <div class="row mb-3">
-                                    <label for="Paidoff" class="col-sm-2 col-form-label">Insufficient</label>
+                                {{-- <div class="row mb-3">
+                                    <label for="Paidoff" class="col-sm-2 col-form-label">Insufficient</label> --}}
                                     {{-- <div class="col-sm-10"> --}}
-                                    <div class="col-sm-10">
+                                    {{-- <div class="col-sm-10">
                                         <input type="text" class="form-control"
                                             value="IDR {{ number_Format($transaction->getTotalPrice($transaction->Room->price, $transaction->check_in, $transaction->check_out) - $transaction->getTotalPayment()) }}"
                                             readonly>
-                                    </div>
+                                    </div> --}}
                                     {{-- </div>  --}}
 
 
-                                </div>
-                                <hr>
-                                <div class="col-sm-12 mt-2">
+                                {{-- </div>
+                                <hr> --}}
+                                {{-- <div class="col-sm-12 mt-2">
                                     <form method="POST" action="{{ route('paydebt') }}">
                                         @csrf
                                         <input type="hidden" name="id" value="{{ $transaction->id }}">
@@ -113,7 +113,7 @@
                                         </div>
                                         <button type="submit" class="btn btn-primary float-end">Pay </button>
                                     </form>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>

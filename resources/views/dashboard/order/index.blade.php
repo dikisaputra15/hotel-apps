@@ -60,8 +60,6 @@
                                 <th>Check out</th>
                                 <th>Days</th>
                                 <th>Total Price</th>
-                                <th>Paid Off</th>
-                                <th>Debt</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -75,8 +73,6 @@
                                     <td>{{ $t->check_out->isoFormat('D MMM Y') }}</td>
                                     <td>{{ $t->check_in->diffindays($t->check_out) }} Day</td>
                                     <td>Rp.{{ number_format($t->getTotalPrice()) }}</td>
-                                    <td>Rp. {{ number_format($t->getTotalPayment()) }}</td>
-                                    <td>Rp. {{ number_format($t->getTotalPrice() - $t->getTotalPayment()) }}</td>
                                     <td>
                                         @php
                                             $insufficient = $t->getTotalPrice() - $t->getTotalPayment();
@@ -98,8 +94,6 @@
                                 <th>Check out</th>
                                 <th>Days</th>
                                 <th>Total Price</th>
-                                <th>Paid Off</th>
-                                <th>Debt</th>
                                 <th>Action</th>
                             </tr>
                         </tfoot>

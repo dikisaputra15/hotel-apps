@@ -1,7 +1,7 @@
 @extends('frontend.inc.main')
 @section('title')
     <title>
-        DONQUIXOTE | HISTORY PEMESANAN</title>
+        Lippo Carita | HISTORY PEMESANAN</title>
 @endsection
 
 @section('content')
@@ -67,7 +67,7 @@
                                 <h6 class="mb-4 text-dark"> {{ $h->created_at }} </h6>
                                 @if ($h->status == 'Pending' and $h->image == null)
                                     <a class="btn btn-sm w-100 btn-danger shadow-none mb-2"
-                                        href="/bayar/{{ $h->id }}">Bayar Sekarang</a>
+                                        href="/bayar/{{ $h->transaction_id }}">Bayar Sekarang</a>
                                     <a class="btn btn-sm w-100 btn-secondary shadow-none"
                                         style="pointer-events: none;
                         cursor: default;"
