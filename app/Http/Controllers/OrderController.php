@@ -29,31 +29,49 @@ class OrderController extends Controller
             Alert::error('Please Login First!');
             return redirect('/login');
         }
+
         $stayfrom = Carbon::parse($request->from);
         $stayuntil = Carbon::parse($request->to);
-        $room = Room::where('id', $request->room)->first();
 
-        $cektransaksi = Transaction::where('room_id', $request->room)->where([['check_in', '<=', $stayfrom], ['check_out', '>=', $stayuntil]])
-            ->orWhere([['check_in', '>=', $stayfrom], ['check_in', '<=', $stayuntil]])
-            ->orWhere([['check_out', '>=', $stayfrom], ['check_out', '<=', $stayuntil]])->get();
-        if ($cektransaksi->count() > 0) {
+        $room = Room::findOrFail($request->room);
+
+        // Cek ketersediaan kamar
+        $cektransaksi = Transaction::where('room_id', $request->room)
+            ->where(function ($query) use ($stayfrom, $stayuntil) {
+                $query->where('check_in', '<', $stayuntil)
+                    ->where('check_out', '>', $stayfrom);
+            })
+            ->exists();
+
+        if ($cektransaksi) {
             Alert::error('Kamar Tidak Tersedia');
             return back();
         }
+
+        // Cek customer
         if ($request->customer == null) {
             $auth = Auth()->user()->Customer->id;
-            $customer = Customer::where('id', $auth)->first();
+            $customer = Customer::findOrFail($auth);
         } else {
-            $customer = Customer::where('id', $request->customer)->first();
+            $customer = Customer::findOrFail($request->customer);
         }
 
         $price = $room->price;
-        $dayDifference = $stayfrom->diffindays($stayuntil);
+        $dayDifference = $stayfrom->diffInDays($stayuntil);
         $total = $price * $dayDifference;
+
         $paymentmethodnotid = [1];
         $paymentmet = PaymentMethod::whereNotIn('id', $paymentmethodnotid)->get();
 
-        return view('frontend.order', compact('customer', 'room', 'stayfrom', 'dayDifference', 'stayuntil', 'total', 'paymentmet'));
+        return view('frontend.order', compact(
+            'customer',
+            'room',
+            'stayfrom',
+            'dayDifference',
+            'stayuntil',
+            'total',
+            'paymentmet'
+        ));
     }
 
     public function order(Request $request)
