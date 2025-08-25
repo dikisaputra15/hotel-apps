@@ -82,14 +82,16 @@ class OrderController extends Controller
         //cek transaksi apakah kamar sudah ada booking
         $stayfrom = Carbon::parse($request->check_in);
         $stayuntil = Carbon::parse($request->check_out);
-        $cektransaksi = Transaction::where('room_id', $request->room)->where([['check_in', '<=', $stayfrom], ['check_out', '>=', $stayuntil]])
-            ->orWhere([['check_in', '>=', $stayfrom], ['check_in', '<=', $stayuntil]])
-            ->orWhere([['check_out', '>=', $stayfrom], ['check_out', '<=', $stayuntil]])->get();
-        if ($cektransaksi->count() > 0) {
+        $cektransaksi = Transaction::where('room_id', $request->room)
+            ->where(function ($query) use ($stayfrom, $stayuntil) {
+                $query->where('check_in', '<', $stayuntil)
+                    ->where('check_out', '>', $stayfrom);
+            })
+            ->exists();
+        if ($cektransaksi) {
             Alert::error('Kamar Tidak Tersedia');
             return back();
         }
-        // ===========
 
 
         if ($customers->nik == null) {
