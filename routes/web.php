@@ -30,6 +30,7 @@ Route::get('/about', [IndexController::class, 'about']);
 Route::get('/pesan', [IndexController::class, 'pesan'])->name('pesan');
 // (Hotel) Order index
 Route::get('/invoice/{id}', [OrderController::class, 'invoice']);
+Route::get('/order', [OrderController::class, 'index'])->name('order.index');
 Route::post('/order', [OrderController::class, 'index']);
 Route::post('/order/post', [OrderController::class, 'order']);
 Route::get('/bayar/{id}', [OrderController::class, 'pembayaran']);
